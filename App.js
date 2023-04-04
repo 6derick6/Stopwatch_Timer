@@ -7,7 +7,7 @@ export default function App() {
 
   console.disableYellowBox = true;
   const [segundos,setarSegundos] = useState(0);
-  const [minutos,setarminutos] = useState(0);
+  const [minutos,setarMinutos] = useState(0);
 
   const [alarmSound,setarAlarmSound] = useState([
     {
@@ -32,7 +32,11 @@ export default function App() {
     <View style={styles.container}>
       <Text style={{color:'white',fontSize:30}}>Selecione o seu tempo:</Text>
       <View style={{flexDirection:'row'}}>
-        <Picker style={{ height: 50, width: 100 }}>
+        <Text style={{color:'white'}}>Min: </Text>
+        <Picker 
+        selectedValue={minutos}
+        onValueChange={(itemValue, itemIndex) => setarMinutos(itemValue)}
+        style={{ height: 50, width: 100, color:'white' }}>
           {
           numeros.map(function(val){
             return(<Picker.Item label={val.toString()} value={val.toString()} />);
@@ -40,7 +44,12 @@ export default function App() {
           }
         </Picker>
 
-        <Picker style={{ height: 50, width: 100 }}>
+        <Text style={{color:'white'}}>Seg: </Text>  
+        <Picker 
+        selectedValue={segundos}
+        onValueChange={(itemValue, itemIndex) => setarSegundos(itemValue)}
+        style={{ height: 50, width: 100, color: 'white' }}>
+          <Picker.Item label='0' value='0' />
           {
           numeros.map(function(val){
             return(<Picker.Item label={val.toString()} value={val.toString()} />);
