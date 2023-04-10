@@ -12,18 +12,21 @@ export default function App() {
 
   const [alarmSound,setarAlarmSound] = useState([
     {
+      id:1,
       selecionado: true,
       som:'alarme 1',
       file: 'alarme1.mp3'
     },
 
     {
+      id:2,
       selecionado: false,
       som:'alarme 2',
       file: 'alarme2.mp3'
     },
 
     {
+      id:3,
       selecionado: false,
       som:'alarme 3',
       file: 'alarme3.mp3'
@@ -33,6 +36,18 @@ export default function App() {
   var numeros = [];
   for(var i = 1; i<=60; i++){
     numeros.push(i);
+  }
+
+  function setarAlarme(id){
+    let alarmesTemp = alarmSound.map(function(val){
+      if(id != val.id)
+        val.selecionado = false;
+      else
+        val.selecionado = true;  
+      return val;
+    })
+
+    setarAlarmSound(alarmesTemp);
   }
 
   return (
@@ -83,7 +98,7 @@ export default function App() {
           if(val.selecionado){
           return (
           
-          <TouchableOpacity style={styles.btnEscolherSelecionado}>
+          <TouchableOpacity onPress={()=>setarAlarme(val.id)} style={styles.btnEscolherSelecionado}>
             <Text style={{color:'white'}}>{val.som}</Text>
             </TouchableOpacity>
           );
@@ -91,7 +106,7 @@ export default function App() {
 
             return (
           
-              <TouchableOpacity style={styles.btnEscolher}>
+              <TouchableOpacity onPress={()=>setarAlarme(val.id)} style={styles.btnEscolher}>
                 <Text style={{color:'white'}}>{val.som}</Text>
                 </TouchableOpacity>
               );
@@ -129,4 +144,3 @@ const styles = StyleSheet.create({
   },
 });
 
-//11:48
