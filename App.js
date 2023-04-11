@@ -3,12 +3,13 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { LinearGradient } from 'expo-linear-gradient';
+import Contador from './Contador';
 
 export default function App() {
 
   console.disableYellowBox = true;
   const [estado,setarEstado] = useState('selecionar');
-  const [segundos,setarSegundos] = useState(0);
+  const [segundos,setarSegundos] = useState(1);
   const [minutos,setarMinutos] = useState(0);
 
   const [alarmSound,setarAlarmSound] = useState([
@@ -123,9 +124,7 @@ export default function App() {
     );
   }else if(estado == 'iniciar'){
     return(
-      <View>
-        <Text>Começou</Text>
-      </View>
+      <Contador setarEstado={setarEstado} minutos={minutos} segundos={segundos}></Contador>
     );
   }  
 }
