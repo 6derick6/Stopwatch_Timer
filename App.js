@@ -73,6 +73,7 @@ export default function App() {
           selectedValue={minutos}
           onValueChange={(itemValue, itemIndex) => setarMinutos(itemValue)}
           style={{ height: 50, width: 100, color:'white' }}>
+            <Picker.Item label='0' value='0' />
             {
             numeros.map(function(val){
               return(<Picker.Item label={val.toString()} value={val.toString()} />);
@@ -85,7 +86,6 @@ export default function App() {
           selectedValue={segundos}
           onValueChange={(itemValue, itemIndex) => setarSegundos(itemValue)}
           style={{ height: 50, width: 100, color: 'white' }}>
-            <Picker.Item label='0' value='0' />
             {
             numeros.map(function(val){
               return(<Picker.Item label={val.toString()} value={val.toString()} />);
@@ -124,7 +124,7 @@ export default function App() {
     );
   }else if(estado == 'iniciar'){
     return(
-      <Contador setarEstado={setarEstado} minutos={minutos} segundos={segundos}></Contador>
+      <Contador setarMinutos={setarMinutos} setarSegundos={setarSegundos} setarEstado={setarEstado} minutos={minutos} segundos={segundos}></Contador>
     );
   }  
 }
