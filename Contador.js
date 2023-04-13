@@ -44,7 +44,7 @@ export default function Contador(props) {
                         alarme = val.file;
                     }
                 })
-                await soundObject.loadAsync(file);
+                await soundObject.loadAsync(alarme);
                 await soundObject.playAsync();
 
                 //await soundObject.unloadAsync();
