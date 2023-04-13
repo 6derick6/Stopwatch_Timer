@@ -17,21 +17,21 @@ export default function App() {
       id:1,
       selecionado: true,
       som:'alarme 1',
-      file: 'alarme1.mp3'
+      file: require('./assets/alarme1.mp3')
     },
 
     {
       id:2,
       selecionado: false,
       som:'alarme 2',
-      file: 'alarme2.mp3'
+      file: require('./assets/alarme2.mp3')
     },
 
     {
       id:3,
       selecionado: false,
       som:'alarme 3',
-      file: 'alarme3.mp3'
+      file: require('./assets/alarme3.mp3')
     },
   ]);
 
@@ -124,7 +124,7 @@ export default function App() {
     );
   }else if(estado == 'iniciar'){
     return(
-      <Contador setarMinutos={setarMinutos} setarSegundos={setarSegundos} setarEstado={setarEstado} minutos={minutos} segundos={segundos}></Contador>
+      <Contador alarmes={alarmSound} setarMinutos={setarMinutos} setarSegundos={setarSegundos} setarEstado={setarEstado} minutos={minutos} segundos={segundos}></Contador>
     );
   }  
 }

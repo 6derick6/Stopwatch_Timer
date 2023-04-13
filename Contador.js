@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Audio } from 'expo-av';
 
 export default function Contador(props) {
 
@@ -23,7 +24,7 @@ export default function Contador(props) {
                         props.setarEstado('selecionar');
                         props.setarMinutos(0);
                         props.setarSegundos(1);
-                        alert('acabou');
+                        playSound();
                     }
                 }
             }
@@ -33,6 +34,24 @@ export default function Contador(props) {
         return () => clearInterval(timer);
 
     })
+
+    async function playSound(){
+        const soundObject = new Audio.Sound();
+            try {
+                var alarme;
+                props.alarme.map(function(val){
+                    if(val.selecionado){
+                        alarme = val.file;
+                    }
+                })
+                await soundObject.loadAsync(file);
+                await soundObject.playAsync();
+
+                //await soundObject.unloadAsync();
+            } catch (error){
+
+            }
+    }
 
     function resetar(){
         props.setarEstado('selecionar');
